@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+struct Fact : Codable, Identifiable {
+    var id: String
+    let categories : [String]
+    let url : String
+    let value : String
+}

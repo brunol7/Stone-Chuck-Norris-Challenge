@@ -11,34 +11,43 @@ import SwiftUI
 
 struct SearchBar: UIViewRepresentable {
 
-    @Binding var text: String
+    @Binding var searchTerm: String
+    
 
-    class Coordinator: NSObject, UISearchBarDelegate {
+    class SearchBarCoordinator: NSObject, UISearchBarDelegate {
 
-        @Binding var text: String
+        @Binding var searchTerm: String
 
-        init(text: Binding<String>) {
-            _text = text
+        init(searchTerm: Binding<String>) {
+            self._searchTerm = searchTerm
         }
 
-        func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-            text = searchText
+//        func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//            searchTerm = searchText
+//        }
+        
+        func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+          searchTerm = searchBar.text ?? ""
+          UIApplication.shared.windows.first { $0.isKeyWindow }?.endEditing(true)
         }
+        
     }
 
-    func makeCoordinator() -> SearchBar.Coordinator {
-        return Coordinator(text: $text)
+    func makeCoordinator() -> SearchBar.SearchBarCoordinator {
+        return SearchBarCoordinator(searchTerm: $searchTerm)
     }
 
     func makeUIView(context: UIViewRepresentableContext<SearchBar>) -> UISearchBar {
         let searchBar = UISearchBar(frame: .zero)
         searchBar.delegate = context.coordinator
         searchBar.searchBarStyle = .minimal
+        searchBar.autocapitalizationType = .none
+        searchBar.placeholder = "teste"
         return searchBar
     }
 
     func updateUIView(_ uiView: UISearchBar, context: UIViewRepresentableContext<SearchBar>) {
-        uiView.text = text
+        uiView.text = searchTerm
     }
 }
 
