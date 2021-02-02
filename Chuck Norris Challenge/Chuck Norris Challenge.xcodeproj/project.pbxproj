@@ -8,15 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		152052B125C24C0400EA186E /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152052B025C24C0400EA186E /* SearchBar.swift */; };
+		1554BB4725C8310F005BBD0E /* FactsSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1554BB4625C8310F005BBD0E /* FactsSearch.swift */; };
+		1554BB5125C8476A005BBD0E /* StateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1554BB5025C8476A005BBD0E /* StateView.swift */; };
+		1554BB5625C84F99005BBD0E /* FactItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1554BB5525C84F99005BBD0E /* FactItem.swift */; };
+		1554BB6025C86875005BBD0E /* SearchState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1554BB5F25C86875005BBD0E /* SearchState.swift */; };
+		1554BB6A25C8DD77005BBD0E /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1554BB6925C8DD76005BBD0E /* ActivityViewController.swift */; };
 		15ED679625C20E4A0044CB2C /* Chuck_Norris_ChallengeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15ED679525C20E4A0044CB2C /* Chuck_Norris_ChallengeApp.swift */; };
 		15ED679825C20E4A0044CB2C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15ED679725C20E4A0044CB2C /* ContentView.swift */; };
 		15ED679A25C20E4C0044CB2C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15ED679925C20E4C0044CB2C /* Assets.xcassets */; };
 		15ED679D25C20E4C0044CB2C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15ED679C25C20E4C0044CB2C /* Preview Assets.xcassets */; };
 		15ED67A825C20E4D0044CB2C /* Chuck_Norris_ChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15ED67A725C20E4D0044CB2C /* Chuck_Norris_ChallengeTests.swift */; };
 		15ED67B325C20E4D0044CB2C /* Chuck_Norris_ChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15ED67B225C20E4D0044CB2C /* Chuck_Norris_ChallengeUITests.swift */; };
-		15ED67CA25C22A5C0044CB2C /* Webservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15ED67C925C22A5C0044CB2C /* Webservice.swift */; };
 		15ED67D225C22B450044CB2C /* Fact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15ED67D125C22B450044CB2C /* Fact.swift */; };
-		15ED67D725C2333E0044CB2C /* FactViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15ED67D625C2333E0044CB2C /* FactViewModel.swift */; };
 		15ED67DC25C233540044CB2C /* FactsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15ED67DB25C233540044CB2C /* FactsListViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +42,11 @@
 
 /* Begin PBXFileReference section */
 		152052B025C24C0400EA186E /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		1554BB4625C8310F005BBD0E /* FactsSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsSearch.swift; sourceTree = "<group>"; };
+		1554BB5025C8476A005BBD0E /* StateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateView.swift; sourceTree = "<group>"; };
+		1554BB5525C84F99005BBD0E /* FactItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactItem.swift; sourceTree = "<group>"; };
+		1554BB5F25C86875005BBD0E /* SearchState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchState.swift; sourceTree = "<group>"; };
+		1554BB6925C8DD76005BBD0E /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		15ED679225C20E4A0044CB2C /* Chuck Norris Challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Chuck Norris Challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		15ED679525C20E4A0044CB2C /* Chuck_Norris_ChallengeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chuck_Norris_ChallengeApp.swift; sourceTree = "<group>"; };
 		15ED679725C20E4A0044CB2C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -51,9 +59,7 @@
 		15ED67AE25C20E4D0044CB2C /* Chuck Norris ChallengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Chuck Norris ChallengeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		15ED67B225C20E4D0044CB2C /* Chuck_Norris_ChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chuck_Norris_ChallengeUITests.swift; sourceTree = "<group>"; };
 		15ED67B425C20E4D0044CB2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		15ED67C925C22A5C0044CB2C /* Webservice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Webservice.swift; sourceTree = "<group>"; };
 		15ED67D125C22B450044CB2C /* Fact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fact.swift; sourceTree = "<group>"; };
-		15ED67D625C2333E0044CB2C /* FactViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactViewModel.swift; sourceTree = "<group>"; };
 		15ED67DB25C233540044CB2C /* FactsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -86,8 +92,19 @@
 			isa = PBXGroup;
 			children = (
 				152052B025C24C0400EA186E /* SearchBar.swift */,
+				1554BB5025C8476A005BBD0E /* StateView.swift */,
+				1554BB5525C84F99005BBD0E /* FactItem.swift */,
+				1554BB6925C8DD76005BBD0E /* ActivityViewController.swift */,
 			);
 			path = "Reusable Components";
+			sourceTree = "<group>";
+		};
+		1554BB5D25C86837005BBD0E /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				1554BB5F25C86875005BBD0E /* SearchState.swift */,
+			);
+			path = Enum;
 			sourceTree = "<group>";
 		};
 		15ED678925C20E4A0044CB2C = {
@@ -162,7 +179,6 @@
 		15ED67C725C229CE0044CB2C /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				15ED67D625C2333E0044CB2C /* FactViewModel.swift */,
 				15ED67DB25C233540044CB2C /* FactsListViewModel.swift */,
 			);
 			path = ViewModels;
@@ -171,8 +187,9 @@
 		15ED67C825C229DB0044CB2C /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				15ED67C925C22A5C0044CB2C /* Webservice.swift */,
+				1554BB5D25C86837005BBD0E /* Enum */,
 				15ED67D125C22B450044CB2C /* Fact.swift */,
+				1554BB4625C8310F005BBD0E /* FactsSearch.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -307,11 +324,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				152052B125C24C0400EA186E /* SearchBar.swift in Sources */,
+				1554BB5125C8476A005BBD0E /* StateView.swift in Sources */,
+				1554BB5625C84F99005BBD0E /* FactItem.swift in Sources */,
+				1554BB6A25C8DD77005BBD0E /* ActivityViewController.swift in Sources */,
+				1554BB6025C86875005BBD0E /* SearchState.swift in Sources */,
 				15ED67DC25C233540044CB2C /* FactsListViewModel.swift in Sources */,
 				15ED679825C20E4A0044CB2C /* ContentView.swift in Sources */,
+				1554BB4725C8310F005BBD0E /* FactsSearch.swift in Sources */,
 				15ED679625C20E4A0044CB2C /* Chuck_Norris_ChallengeApp.swift in Sources */,
-				15ED67CA25C22A5C0044CB2C /* Webservice.swift in Sources */,
-				15ED67D725C2333E0044CB2C /* FactViewModel.swift in Sources */,
 				15ED67D225C22B450044CB2C /* Fact.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -482,7 +502,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "brunol7.Chuck-Norris-Challenge";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -504,7 +524,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "brunol7.Chuck-Norris-Challenge";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
