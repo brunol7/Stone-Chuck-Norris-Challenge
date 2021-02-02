@@ -18,6 +18,7 @@ struct ContentView: View {
             VStack() {
                 
                 SearchBar(searchText: $viewModel.searchText)
+                    .accessibility(identifier: "searchBar")
 
                 // Checking the app state so we can or instatiate the list of facts or the `StateView`
                 if viewModel.searchState == .successfull {
@@ -26,6 +27,7 @@ struct ContentView: View {
                     }
                     .listStyle(PlainListStyle())
                     .buttonStyle(PlainButtonStyle())
+                    .accessibility(identifier: "factsList")
                 } else {
                     StateView($viewModel.searchState)
                 }

@@ -26,9 +26,11 @@ struct StateView : View {
         VStack {
             Spacer()
             image
+                .accessibility(identifier: "stateImage")
             Text(message)
                 .font(.title)
                 .multilineTextAlignment(.center)
+                .accessibility(identifier: "stateMessage")
             Spacer()
         }
         .padding()
@@ -56,7 +58,7 @@ struct StateView : View {
             self.message = "There's something wrong in your request"
         case .decodeError:
             self.image = Image("chuckNorrisAngry")
-            self.message = "I didn't understood what I've found"
+            self.message = "I didn't understood what I'd found"
         case .successfull:
             print("Successfull search")
         }
