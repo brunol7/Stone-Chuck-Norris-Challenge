@@ -10,7 +10,13 @@ import XCTest
 
 class Chuck_Norris_ChallengeTests: XCTestCase {
 
+    var setupContentView : ContentView?
+    
+    var setupViewModel : FactsListViewModel?
+    
     override func setUpWithError() throws {
+        setupViewModel = FactsListViewModel()
+        setupContentView = ContentView(viewModel: setupViewModel ?? FactsListViewModel())
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
 
@@ -18,15 +24,45 @@ class Chuck_Norris_ChallengeTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testViewModel() {
+        let viewModel = FactsListViewModel()
+        XCTAssertEqual(viewModel.searchState, .zero)
+        XCTAssertEqual(viewModel.facts.count, 0)
+        XCTAssertEqual(viewModel.searchText, "")
+        viewModel.searchFacts(query: "")
+        XCTAssertEqual(viewModel.facts.count, 0)
+        viewModel.searchFacts(query: "termThatWillReturnNoResults")
+        XCTAssertEqual(viewModel.facts.count, 0)
+        viewModel.searchFacts(query: "test")
+        if viewModel.searchState == .successfull {
+            XCTAssertGreaterThan(viewModel.facts.count, 0)
+        } else {
+            XCTAssertEqual(viewModel.facts.count, 0)
+        }
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    
+    func testContentView() {
+        let contentView = ContentView(viewModel: FactsListViewModel())
+        contentView.viewModel.searchText = "test"
+        if contentView.viewModel.searchState == .successfull {
+            XCTAssertGreaterThan(contentView.viewModel.facts.count, 0)
+        } else {
+            XCTAssertEqual(contentView.viewModel.facts.count, 0)
+        }
+    }
+    
+    func testContentViewPerformance() {
+        measure {
+            _ = ContentView(viewModel: FactsListViewModel())
+            setupContentView?.viewModel.searchText = "test"
+        }
+    }
+    
+    
+    func testViewModelLoadPerformance() {
+        measure{
+            _ = FactsListViewModel()
+            setupViewModel?.searchFacts(query: "test")
         }
     }
 

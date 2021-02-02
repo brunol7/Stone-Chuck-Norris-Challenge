@@ -9,51 +9,29 @@ import SwiftUI
 
 struct ContentView: View {
     
-    let cars = ["Subaru WRXSubaru WRXSubaru WRXSubaru WRXSubaru WRXSubaru WRXSubaru WRXSubaru WRXSubaru WRXSubaru WRXSubaru WRXSubaru WRXSubaru WRXSubaru WRXSubaru WRXSubaru WRXSubaru WRX", "Tesla Model 3Subaru WRXSubaru WRX",
-                "Porsche 911Subaru WRX", "Renault Zoe", "DeLoreanSubaru WRXSubaru WRXSubaru WRXSubaru WRXSubaru WRXSubaru WRXSubaru WRXSubaru WRXSubaru WRXSubaru WRX", "Tesla Model 3",
-                "Porsche 911", "Renault Zoe", "DeLorean", "Tesla Model 3",
-                "Porsche 911", "Renault ZoeSubaru WRXSubaru WRXSubaru WRXSubaru WRXSubaru WRXSubaru WRXSubaru WRXSubaru WRX", "DeLorean", "Tesla Model 3",
-                "Porsche 911", "Renault Zoe", "DeLorean", "Tesla Model 3",
-                "Porsche 911", "Renault Zoe", "DeLorean"]
-    
-    @State private var searchText : String = ""
+    /// Instanciating our ViewModel Class
+    @ObservedObject var viewModel: FactsListViewModel
 
     
-    var body: some View {
+    @ViewBuilder var body: some View {
         NavigationView {
             VStack() {
-                SearchBar(text: $searchText)
                 
-                List {
-                    ForEach(self.cars, id: \.self) { car in
-                        VStack(alignment: .leading) {
-                            let factText = Text(car)
-                            if car.count <= 80 {
-                                factText
-                                    .font(.title2)
-                            } else {
-                                factText
-                                    .font(.body)
-                            }
-                            HStack(alignment: .bottom) {
-                                Text("category")
-                                    .padding(.horizontal, 10)
-                                    .padding(.vertical,2)
-                                    .background(Color("brandColor"))
-                                    .foregroundColor(.white)
-                                    .textCase(.uppercase)
-                                    .font(.footnote)
-                                Spacer()
-                                Button(action: {}) {
-                                    Image(systemName: "square.and.arrow.up").foregroundColor(Color("brandColor"))
-                                        .font(.title2)
-                                }
-                            }
-                        }
+                SearchBar(searchText: $viewModel.searchText)
+                    .accessibility(identifier: "searchBar")
+
+                // Checking the app state so we can or instatiate the list of facts or the `StateView`
+                if viewModel.searchState == .successfull {
+                    List (self.viewModel.facts) { fact in
+                            FactItem(fact: fact)
                     }
+                    .listStyle(PlainListStyle())
+                    .buttonStyle(PlainButtonStyle())
+                    .accessibility(identifier: "factsList")
+                } else {
+                    StateView($viewModel.searchState)
                 }
-                .listStyle(PlainListStyle())
-        
+                
             }
             .navigationBarTitle(Text("Chuck Norris Facts"))
         }
@@ -63,7 +41,7 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(viewModel: FactsListViewModel())
             
     }
 }

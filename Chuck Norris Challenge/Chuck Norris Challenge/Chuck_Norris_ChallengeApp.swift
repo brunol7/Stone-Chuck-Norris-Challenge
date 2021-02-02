@@ -11,7 +11,7 @@ import SwiftUI
 struct Chuck_Norris_ChallengeApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(viewModel: FactsListViewModel())
         }
     }
 }
