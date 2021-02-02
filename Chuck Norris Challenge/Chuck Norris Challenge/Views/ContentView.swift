@@ -9,31 +9,27 @@ import SwiftUI
 
 struct ContentView: View {
     
+    /// Instanciating our ViewModel Class
     @ObservedObject var viewModel: FactsListViewModel
-    
-    let cars = ["Subaru WRXSubaru WRXSubaru WRXSubaru WRXSubaru WRXSubaru WRXSubaru WRXSubaru WRXSubaru WRXSubaru WRXSubaru WRXSubaru WRXSubaru WRXSubaru WRXSubaru WRXSubaru WRXSubaru WRX", "Tesla Model 3Subaru WRXSubaru WRX",
-                "Porsche 911Subaru WRX", "Renault Zoe", "DeLoreanSubaru WRXSubaru WRXSubaru WRXSubaru WRXSubaru WRXSubaru WRXSubaru WRXSubaru WRXSubaru WRXSubaru WRX", "Tesla Model 3",
-                "Porsche 911", "Renault Zoe", "DeLorean", "Tesla Model 3",
-                "Porsche 911", "Renault ZoeSubaru WRXSubaru WRXSubaru WRXSubaru WRXSubaru WRXSubaru WRXSubaru WRXSubaru WRX", "DeLorean", "Tesla Model 3",
-                "Porsche 911", "Renault Zoe", "DeLorean", "Tesla Model 3",
-                "Porsche 911", "Renault Zoe", "DeLorean"]
-    
-//    @State private var searchText : String = ""
-    @State private var searchTerm: String = ""
-
 
     
-    var body: some View {
+    @ViewBuilder var body: some View {
         NavigationView {
             VStack() {
-                SearchBar(searchTerm: $viewModel.searchText)
                 
-                List (self.viewModel.facts) { fact in
-                        FactItem(fact: fact)
+                SearchBar(searchText: $viewModel.searchText)
 
+                // Checking the app state so we can or instatiate the list of facts or the `StateView`
+                if viewModel.searchState == .successfull {
+                    List (self.viewModel.facts) { fact in
+                            FactItem(fact: fact)
+                    }
+                    .listStyle(PlainListStyle())
+                    .buttonStyle(PlainButtonStyle())
+                } else {
+                    StateView($viewModel.searchState)
                 }
-                .listStyle(PlainListStyle())
-                .buttonStyle(PlainButtonStyle())
+                
             }
             .navigationBarTitle(Text("Chuck Norris Facts"))
         }

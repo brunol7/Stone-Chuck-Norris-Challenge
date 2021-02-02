@@ -8,43 +8,60 @@
 import Foundation
 import SwiftUI
 
+/**
+ Created to pass the user a message off what's happening in the app. It responds to the enum `SearchState`, creating a image and message for each state in the enum.
+ 
+ - Author : Bruno Luebke
+ */
 struct StateView : View {
-    var image : String
-    var message : String
-    var state : searchState {
-        didSet{
-            switch state {
-            case .zero :
-                self.image = "chuckNorrisApproved"
-                self.message = ""
-            case .noResults :
-                self.image = "chuckNorrisAngry"
-                self.message = "0 facts encontered in your search"
-            case .networkError :
-                self.image = "chuckNorrisAngry"
-                self.message = "There's a network problem"
-            case .searchError :
-                self.image = "chuckNorrisAngry"
-                self.message = "Your search returned an error"
-            }
-        }
-    }
-    var body : some View {
+    // The message and image variables
+    private var image : Image?
+    private var message : String = ""
+    
+    /// Instanciating the @Binding variable connected to the @Published one in `FactsListViewModel`
+    @Binding var state : SearchState
+
+    
+    @ViewBuilder var body : some View {
         VStack {
-          Spacer()
-          Image(image)
-          Text(message)
-            .font(.title)
-          Spacer()
+            Spacer()
+            image
+            Text(message)
+                .font(.title)
+                .multilineTextAlignment(.center)
+            Spacer()
         }
         .padding()
-        .foregroundColor(Color(.systemIndigo))
+        .foregroundColor(Color("brandColor"))
     }
+    
+    init(_ state: Binding<SearchState>) {
+        self._state = state
+        // Here we determine in the switch case, which message and image we'll use in each state
+        switch self.state {
+        case .zero :
+            self.image = Image("chuckNorrisApproved")
+            self.message = "Let's find some facts"
+        case .searching :
+            self.image = Image("chuckNorrisApproved")
+            self.message = "Searching..."
+        case .noResults :
+            self.image = Image("chuckNorrisAngry")
+            self.message = "0 facts encontered in your search"
+        case .networkError :
+            self.image = Image("chuckNorrisAngry")
+            self.message = "There's a network problem"
+        case .searchError :
+            self.image = Image("chuckNorrisAngry")
+            self.message = "There's something wrong in your request"
+        case .decodeError:
+            self.image = Image("chuckNorrisAngry")
+            self.message = "I didn't understood what I've found"
+        case .successfull:
+            print("Successfull search")
+        }
 }
 
-enum searchState {
-    case zero
-    case noResults
-    case networkError
-    case searchError
+
+
 }
